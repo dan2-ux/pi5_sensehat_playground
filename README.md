@@ -17,7 +17,7 @@
 ## Workflow
 
 To enable control of sensehat through Playground, the Raspberry Pi 5 needs to run Docker for `sdv-runtime`, which acts as a bridge between the Pi 5 and Playground.  
-If the connection is successful, the Python script will be able to receive Playground values and change the NeoPixels' status accordingly.
+If the connection is successful, the Python script will be able to receive Playground values and change the sensehat' status accordingly.
 
 
 ## Wiring
