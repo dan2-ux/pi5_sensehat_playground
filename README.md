@@ -33,9 +33,9 @@ Historically, accessing this data has been complex, with each manufacturer using
 
 VSS defines a structured tree of signals, providing a canonical way to name and organize data. For example:
 
-Vehicle.Speed always refers to the vehicle's current speed.
-Vehicle.Powertrain.FuelSystem.Level refers to the fuel tank level.
-Vehicle.Cabin.Door.FrontLeft.IsLocked refers to the lock status of the driver's door.
+- Vehicle.Speed always refers to the vehicle's current speed.
+- Vehicle.Powertrain.FuelSystem.Level refers to the fuel tank level.
+- Vehicle.Cabin.Door.FrontLeft.IsLocked refers to the lock status of the driver's door.
 By using this standardized tree, developers can write applications that are portable across different vehicle makes and models, without needing to worry about the underlying hardware differences.
 
 ## 2. The Role of a Data Broker
@@ -43,11 +43,11 @@ If VSS is the language, then a Data Broker is the central hub or "librarian" tha
 
 The data broker is responsible for:
 
-Storing the current value of all vehicle signals defined by VSS.
-Providing access for other applications (like our future Python script) to read or write signal values.
-Enforcing security to ensure that only authorized applications can modify sensitive data (like unlocking doors).
-Notifying applications when a signal value they are interested in has changed.
-Applications communicate with the Kuksa.val data broker using protocols like gRPC or WebSockets, which is what our kuksa-client library will do in the next course.
+- Storing the current value of all vehicle signals defined by VSS.
+- Providing access for other applications (like our future Python script) to read or write signal values.
+- Enforcing security to ensure that only authorized applications can modify sensitive data (like unlocking doors).
+- Notifying applications when a signal value they are interested in has changed.
+- Applications communicate with the Kuksa.val data broker using protocols like gRPC or WebSockets, which is what our kuksa-client library will do in the next course.
 
 ## 3. What is sdv-runtime?
 Setting up a full data broker, VSS database, and all the required services from scratch can be complicated. This is where sdv-runtime comes in.
@@ -63,6 +63,18 @@ Services that allow it to connect to cloud platforms like playground.digital.aut
 Using sdv-runtime saves us from a complex setup process and lets us focus on building our application. It provides a ready-to-use VSS data layer for our project.
 
 In the next lesson, we will install Docker on our Raspberry Pi and deploy the sdv-runtime container.
+
+## 4. What is playground.digital.auto?
+playground.digital.auto is a web-based platform for prototyping and validating Software-Defined Vehicle (SDV) applications. It provides a virtual, 3D-rendered vehicle model and a dashboard of controls that are connected to a VSS-compliant data broker in the cloud.
+
+Crucially, sdv-runtime (which you have running on your Pi) has built-in capabilities to connect to the Playground. When connected, the data broker on your Pi and the data broker in the Playground's cloud become synchronized.
+
+This means:
+
+- A change made on your physical joystick will be sent to your local data broker, which then forwards it to the Playground, updating the cloud dashboard.
+- A change made in the Playground's web dashboard will be sent to your local data broker, which our script then uses to update the physical Sense HAT.
+This completes the entire end-to-end data loop, from a web browser, through the cloud, to your local hardware, and back.
+
 
 
 
