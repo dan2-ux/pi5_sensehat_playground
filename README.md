@@ -36,6 +36,7 @@ VSS defines a structured tree of signals, providing a canonical way to name and 
 - Vehicle.Speed always refers to the vehicle's current speed.
 - Vehicle.Powertrain.FuelSystem.Level refers to the fuel tank level.
 - Vehicle.Cabin.Door.FrontLeft.IsLocked refers to the lock status of the driver's door.
+
 By using this standardized tree, developers can write applications that are portable across different vehicle makes and models, without needing to worry about the underlying hardware differences.
 
 ## 2. The Role of a Data Broker
@@ -75,7 +76,7 @@ This means:
 - A change made in the Playground's web dashboard will be sent to your local data broker, which our script then uses to update the physical Sense HAT.
 This completes the entire end-to-end data loop, from a web browser, through the cloud, to your local hardware, and back.
 
-
+For more information about playground: *https://www.youtube.com/watch?v=HQrsGY7XLU4&t=9s*
 
 
 ## Step-by-Step Guide
