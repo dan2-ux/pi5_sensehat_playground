@@ -1,4 +1,4 @@
-# This is the repository for running pi 5 with sense hat with ability to receive signal from PlayGround
+# Repository for using the Raspberry Pi 5 with a Sense HAT, enabling communication with PlayGround: receiving signals from PlayGround and sending inputs from the Sense HAT joystick.
 
 ## Hardware Requirements
 
@@ -23,6 +23,42 @@ If the connection is successful, the Python script will be able to receive Playg
 ## Wiring
 
 Unlike other projects that required complicated wiring this project only need you to attach the hat to gpio pin.
+
+## Knowledge required before continuing.
+
+## 1. What is the Vehicle Signal Specification (VSS)?
+In a modern vehicle, hundreds of electronic control units (ECUs) and sensors are constantly generating data. This includes everything from the vehicle's speed and engine RPM to the status of lights, doors, and infotainment systems.
+
+Historically, accessing this data has been complex, with each manufacturer using proprietary formats and protocols. The Vehicle Signal Specification (VSS), a project hosted by the COVESA Alliance, solves this problem by creating a standardized, common language for describing vehicle data.
+
+VSS defines a structured tree of signals, providing a canonical way to name and organize data. For example:
+
+Vehicle.Speed always refers to the vehicle's current speed.
+Vehicle.Powertrain.FuelSystem.Level refers to the fuel tank level.
+Vehicle.Cabin.Door.FrontLeft.IsLocked refers to the lock status of the driver's door.
+By using this standardized tree, developers can write applications that are portable across different vehicle makes and models, without needing to worry about the underlying hardware differences.
+
+## 2. The Role of a Data Broker
+If VSS is the language, then a Data Broker is the central hub or "librarian" that manages all the data. In our project, we use Eclipse Kuksa.val as our data broker.
+
+The data broker is responsible for:
+
+Storing the current value of all vehicle signals defined by VSS.
+Providing access for other applications (like our future Python script) to read or write signal values.
+Enforcing security to ensure that only authorized applications can modify sensitive data (like unlocking doors).
+Notifying applications when a signal value they are interested in has changed.
+Applications communicate with the Kuksa.val data broker using protocols like gRPC or WebSockets, which is what our kuksa-client library will do in the next course.
+
+## 3. What is sdv-runtime?
+Setting up a full data broker, VSS database, and all the required services from scratch can be complicated. This is where sdv-runtime comes in.
+
+sdv-runtime is a pre-packaged environment, delivered as a Docker container, that includes everything you need to get started with SDV development. When you run it, it automatically starts:
+
+A Kuksa.val Data Broker instance.
+A pre-loaded VSS database with a wide range of standard signals.
+Services that allow it to connect to cloud platforms like playground.digital.auto.
+
+<img width="937" height="778" alt="image" src="https://github.com/user-attachments/assets/17f21899-d4bc-4954-9921-948313bc07f6" />
 
 
 ## Step-by-Step Guide
