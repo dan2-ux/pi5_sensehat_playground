@@ -60,6 +60,11 @@ Services that allow it to connect to cloud platforms like playground.digital.aut
 
 <img width="937" height="778" alt="image" src="https://github.com/user-attachments/assets/17f21899-d4bc-4954-9921-948313bc07f6" />
 
+Using sdv-runtime saves us from a complex setup process and lets us focus on building our application. It provides a ready-to-use VSS data layer for our project.
+
+In the next lesson, we will install Docker on our Raspberry Pi and deploy the sdv-runtime container.
+
+
 
 ## Step-by-Step Guide
 
