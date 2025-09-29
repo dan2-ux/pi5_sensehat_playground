@@ -24,7 +24,7 @@ If the connection is successful, the Python script will be able to receive Playg
 
 Unlike other projects that required complicated wiring this project only need you to attach the hat to gpio pin.
 
-## Knowledge required before continuing.
+# Knowledge required before continuing.
 
 ## 1. What is the Vehicle Signal Specification (VSS)?
 In a modern vehicle, hundreds of electronic control units (ECUs) and sensors are constantly generating data. This includes everything from the vehicle's speed and engine RPM to the status of lights, doors, and infotainment systems.
