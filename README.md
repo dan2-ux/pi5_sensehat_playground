@@ -113,7 +113,7 @@ sudo apt-get install sense-hat
 
 ### Step 4: run file **playground_sense.py**
 **Warining**: If you just start docker and go straight into running the code. As current value is now None, just like every other value. Consider, changing ambient on, color and Intensity.
-If there is nothing wrong you should able to control sensehat's light using api on PlayGround.
+If there is nothing wrong you should able to control sensehat's light using api on PlayGround or natively control using joystick.
 
 ### Using Guide:
 
